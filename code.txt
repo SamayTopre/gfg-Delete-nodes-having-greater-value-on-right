@@ -1,0 +1,58 @@
+Node*reverse(Node*head)
+{
+    
+    Node*prev=NULL;
+    Node*curr=head;
+    while(curr!=NULL)
+    {
+        Node*temp=curr->next;
+        curr->next=prev;
+        prev=curr;
+        curr=temp;
+    }
+    
+    return prev;
+    
+}
+
+
+
+class Solution
+{
+    public:
+    Node *compute(Node *head)
+    {
+head=reverse(head);
+Node*curr=head;
+Node*prev=head;
+head=head->next;
+int max=prev->data;
+while(head!=NULL)
+{
+    
+ if(head->data<max)
+ {
+     
+    prev->next=head->next;
+    head=head->next;
+     
+ }
+ else
+ {
+     max=head->data;
+     prev=head;
+     head=head->next;
+ }
+
+
+}
+
+head=reverse(curr);
+
+return head;
+
+
+
+    }
+    
+};
